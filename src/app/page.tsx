@@ -4,12 +4,17 @@ import { useCountryData } from "@/hooks/useCountryData";
 import { ICountry } from "@/models/interfaceCountyLocal";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import Maps from "./components/Maps/Maps";
 import styles from "./page.module.css";
+import dynamic from "next/dynamic";
 
 export default function Home() {
   const { paisesFiltrados } = useCountryData();
   const [filteredCountries, setFilteredCountries] = useState<ICountry[]>([]);
+
+  const LazyMap = dynamic(() => import("@/app/components/Maps/Maps"), {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  });
 
   function handleSearch(value: string) {
     const normalizedValue = value.toLowerCase().trim();
@@ -31,7 +36,9 @@ export default function Home() {
 
   return (
     <main className={styles.componentePrincipal}>
-      <Typography variant="h4" className={styles.tituloSecundario}>Prueba Tecnica de Paises</Typography>
+      <Typography variant="h4" className={styles.tituloSecundario}>
+        Prueba Tecnica de Paises
+      </Typography>
       <section className={styles.sectionSecond}>
         <Search onSearch={handleSearch} />
       </section>
@@ -39,7 +46,7 @@ export default function Home() {
         <Typography variant="h5" className={styles.tituloSecundario}>
           Mapa Interactivo
         </Typography>
-        <Maps
+        <LazyMap
           countries={
             filteredCountries.length > 0 ? filteredCountries : paisesFiltrados
           }

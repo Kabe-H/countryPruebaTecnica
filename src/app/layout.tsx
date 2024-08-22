@@ -13,7 +13,6 @@ export const metadata: Metadata = {
       url: "https://www.linkedin.com/in/kabe-heredia/",
     },
   ],
-  viewport: { width: "device-width", initialScale: 1 },
 };
 
 export default function RootLayout({
@@ -23,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
