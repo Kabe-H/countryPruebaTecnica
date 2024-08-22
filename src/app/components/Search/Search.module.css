@@ -1,0 +1,11 @@
+.containerPrincipaSearch{
+  border: 1px solid #383838;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fafafa;
+  box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.75);
+}
+
+.textfieldSearch {
+  background-color: white;
+}

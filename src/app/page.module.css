@@ -1,0 +1,17 @@
+.componentePrincipal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 90vh;
+}
+
+.sectionSecond {
+  padding-top: 5vh;
+}
+
+.tituloSecundario {
+  padding-bottom: 15px;
+  filter: drop-shadow(0 0 5px rgba(119, 118, 118, 0.75));
+}

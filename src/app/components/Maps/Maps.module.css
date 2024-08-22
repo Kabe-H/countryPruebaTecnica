@@ -1,0 +1,9 @@
+.containerPrincipalMap {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.containerMap {
+  height: 500px;
+  width: 80vw;
+}
