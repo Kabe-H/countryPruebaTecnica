@@ -1,6 +1,7 @@
 .containerPrincipalMap {
   border-radius: 15px;
   overflow: hidden;
+  border: 0.5px solid #818181;
 }
 
 .containerMap {

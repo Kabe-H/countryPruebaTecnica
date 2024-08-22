@@ -3,13 +3,14 @@ import Search from "@/app/components/Search/Search";
 import { useCountryData } from "@/hooks/useCountryData";
 import { ICountry } from "@/models/interfaceCountyLocal";
 import Typography from "@mui/material/Typography";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import styles from "./page.module.css";
-import dynamic from "next/dynamic";
 
 export default function Home() {
   const { paisesFiltrados } = useCountryData();
   const [filteredCountries, setFilteredCountries] = useState<ICountry[]>([]);
+  const [bandera, setBandera] = useState<boolean>(false);
 
   const LazyMap = dynamic(() => import("@/app/components/Maps/Maps"), {
     ssr: false,
@@ -31,6 +32,9 @@ export default function Home() {
 
     if (filtered?.length) {
       setFilteredCountries(filtered);
+      setBandera(false);
+    } else {
+      setBandera(true);
     }
   }
 
@@ -40,7 +44,11 @@ export default function Home() {
         Prueba Tecnica de Paises
       </Typography>
       <section className={styles.sectionSecond}>
-        <Search onSearch={handleSearch} />
+        <Search
+          onSearch={handleSearch}
+          filteredCountries={filteredCountries}
+          bandera={bandera}
+        />
       </section>
       <section className={styles.sectionSecond}>
         <Typography variant="h5" className={styles.tituloSecundario}>

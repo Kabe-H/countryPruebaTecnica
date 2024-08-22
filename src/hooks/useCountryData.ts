@@ -5,8 +5,8 @@ import { ICountryAPI } from "@/models/interfaceCountryAPI";
 import { ICountry } from "@/models/interfaceCountyLocal";
 
 export function useCountryData() {
-  const [paises, setPaises] = useState<ICountryAPI[]>();
-  const [paisesFiltrados, setPaisesFiltrados] = useState<ICountry[]>();
+  const [paises, setPaises] = useState<ICountryAPI[]>([]);
+  const [paisesFiltrados, setPaisesFiltrados] = useState<ICountry[]>([]);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -24,7 +24,7 @@ export function useCountryData() {
       };
       return acc;
     }, {});
-    const combinedArray = paises
+    const combinedArray: ICountry[] = paises
       ?.map((item: any) => {
         const coordinates = array2Lookup[item.code] || {};
         return {
@@ -42,5 +42,5 @@ export function useCountryData() {
     setPaisesFiltrados(combinedArray);
   }, [paises]);
 
-  return { paises, paisesFiltrados };
+  return { paisesFiltrados };
 }
